@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Consultations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <div class="d-none">
+        <input id="CapturedProfileData" value="@ViewBag.State" />
+    </div>
+
+    <!--This is the profile creation toast-->
+    <div>
+        <div class="container row">
+            <div class="col-sm-6">
+                <div role="alert" aria-live="assertive" aria-atomic="true" class="card toast toast-bg card-styling-alert" data-bs-autohide="false">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <i class="icon-styling-alert fa-regular fa-bell text-warm"></i>
+                            <h5 class="card-title text-warm">Tahadhari</h5>
+                        </div>
+                        <p class="card-text text-warm">Hujambo, wasifu wako utatusaidia kubinafsisha utumiaji wako kwenye mfumo wa "Linda Mtoto" vizuri zaidi. Hebu tuunde wasifu wako kwanza.</p>
+                        <a href="@Url.Action("Create", "Profiles")" class="btn btn-warm rounded-pill">Unda Sasa</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--This is the audio modal-->
+    <div class="modal fade" id="audioModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content max-width-fit-content m-auto">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-warm" id="exampleModalLabel">Sauti ya Olivia </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <audio controls id="audioPlayer" class="d-grid justify-content-center">
+                        <source src="" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="homepage">
+        <div class="row d-flex convo-row">
+            <div class="col-auto grouped-convos">
+                <div class="card shadow card-width">
+                    <div class="card-header bg-warm text-white">
+                        <span class="fa fa-tree-city text-warm_light"></span>
+                        &nbsp; Mazungumzo yako, @ViewBag.FirstName
+                    </div>
+                    <ul class="list-group list-group-flush grouped-convo-list" id="list-data">
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col">
+                <div>
+                    <div class="input-group form-floating mb-3 convo-input">
+                        <!--<span class="input-group-text min-width-auto bg-transparent"><span class="fa fa-comment-alt text-warm"></span></span>-->
+                        <input type="text" id="user_prompt" class="form-control" placeholder="" aria-label="User's question" aria-describedby="process_request">
+                        <label class="text-warm" for="user_prompt">Habari @ViewBag.FirstName, anza kuandika swali lako hapa.</label>
+                        <button id="process_request" class="btn btn-warm" type="button"><span class="fa fa-paper-plane"></span></button>
+                    </div>
+                </div>
+
+                <div>
+                    <div id="consultation_area" class="border rounded-2 mb-2 min-height bg-warm_light_user">
+                        <div class="card shadow">
+                            <ul id="convo-data" class="list-group list-group-flush max-height bg-warm">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/consultations.js"></script>
+    <script src="~/js/profiletoast.js"></script>
+}
+

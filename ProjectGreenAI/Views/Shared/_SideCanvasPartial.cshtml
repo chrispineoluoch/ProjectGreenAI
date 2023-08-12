@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ProjectGreenAI.Models;
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<div>
+    <button class="btn btn-light rounded-pill border-color-warm circular-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><span class="fa fa-meteor text-warm icon-position"></span></button>
+</div>
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+    <div class="offcanvas-header">
+        <h5 class="card-title fs-2 fw-bold text-warm">Karibu mzazi </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="offcanvas-body">
+        <div>
+            <div class="card bg-warm">
+                <div class="card-body pt-4 pb-4">
+                    <p class="card-text myabout fs-6 text-white">Katika ulindaji wa ujauzito, tunazingatia kutumia Artificial Intelligence ili kuwapa akina mama fursa ya kupata taarifa na elimu katika safari yao yote ya ujauzito.</p>
+                </div>
+            </div>
+
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <ul class="list-group list-group-flush rounded-2">
+                    <li class="list-group-item third-link bg-warm side-list d-flex align-content-center side-list-styling">
+                        <span class="fa fa-user-doctor text-warm_light icon-span-styling"></span>
+                        <a class="sidenav-link text-warm_light" href="#">&nbsp;&nbsp; Afya ya Mama</a>
+                    </li>
+                    <li class="list-group-item fourth-link bg-warm side-list d-flex align-content-center side-list-styling">
+                        <span class="fa fa-carriage-baby text-warm_light icon-span-styling"></span>
+                        <a class="sidenav-link text-warm_light" href="#">&nbsp;&nbsp; Afya ya Mtoto</a>
+                    </li>
+                    <li class="list-group-item fourth-link bg-warm side-list d-flex align-content-center side-list-styling">
+                        <span class="fa fa-user-cog text-warm_light icon-span-styling"></span>
+                        <a class="sidenav-link text-warm_light" asp-area="Identity" asp-page="/Account/Manage/Index">&nbsp;&nbsp; Dhibiti Akaunti</a>
+                    </li>
+                    <li class="list-group-item fourth-link bg-warm side-list d-flex align-content-center side-list-styling">
+                        <span class="fa fa-user-cog text-warm_light icon-span-styling"></span>
+                        <a class="sidenav-link text-warm_light" href="@Url.Action("Index", "Profiles")">&nbsp;&nbsp; Hariri Wasifu</a>
+                    </li>
+                </ul>
+            }
+            else
+            {
+                <ul class="list-group list-group-flush rounded-2">
+                    <li class="list-group-item third-link bg-warm side-list d-flex align-content-center side-list-styling">
+                        <span class="fa fa-user-doctor text-warm_light icon-span-styling"></span>
+                        <a class="sidenav-link text-warm_light" href="#">&nbsp;&nbsp; Afya ya Mama</a>
+                    </li>
+                    <li class="list-group-item fourth-link bg-warm side-list d-flex align-content-center side-list-styling">
+                        <span class="fa fa-carriage-baby text-warm_light icon-span-styling"></span>
+                        <a class="sidenav-link text-warm_light" href="#">&nbsp;&nbsp; Afya ya Mtoto</a>
+                    </li>
+                </ul>
+            }
+
+        </div>
+    </div>
+</div>

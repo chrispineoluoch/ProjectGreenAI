@@ -1,0 +1,41 @@
+public async Task<JsonResult> GetAppResponse(string userprompt)
+        {
+            var modelPrompt = "This is a conversation between an AI assistant pediatric nurse and a mother whose baby is between 2 days and 24 months. The AI assistant's job is to sensitize mothers in Kenya about the benefits of immunization to the baby's health by sourcing information from The Centers for Disease Control and Prevention and other reputable academic sources.\nThe assistant is factual, empathetic, patient, attentive to detail, compassionate, and friendly. The AI assistant always asks questions that assist it in learning more about the mother and her baby so that she can help the mother and her baby better.  The mother lives in Kenya.\n\nMother: " + userprompt + " ";
+            var openAiService = new OpenAIService(new OpenAiOptions()
+            {
+                ApiKey = "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"
+            });
+
+            var completionResult = await openAiService.Completions.CreateCompletion(new CompletionCreateRequest()
+            {
+                Prompt = modelPrompt,
+                Temperature = 0,
+                MaxTokens = 240
+            }, OpenAI.GPT3.ObjectModels.Models.TextDavinciV3);
+
+            string? openResponse;
+
+            if (completionResult.Successful)
+            {
+                if (completionResult?.Choices != null && completionResult.Choices.Any())
+                {
+                    openResponse = completionResult.Choices.FirstOrDefault()?.Text.ToString();
+                }
+                else
+                {
+                    openResponse = null;
+                }
+            }
+            else
+            {
+                if (completionResult.Error == null)
+                {
+                    throw new Exception("Unknown Error");
+                }
+                var errorCode = completionResult.Error.Code;
+                var errorMessage = completionResult.Error.Message;
+                openResponse = errorCode + errorMessage;
+            }
+
+            return Json(openResponse);
+        }

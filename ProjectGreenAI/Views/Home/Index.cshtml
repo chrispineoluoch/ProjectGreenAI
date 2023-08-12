@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <div class="d-none">
+        <input id="CapturedProfileData" value="@ViewBag.State" />
+    </div>
+
+    <!--This is the profile creation toast-->
+    <div>
+        <div class="container row">
+            <div class="col-sm-6">
+                <div role="alert" aria-live="assertive" aria-atomic="true" class="card toast toast-bg card-styling-alert" data-bs-autohide="false">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <i class="icon-styling-alert fa-regular fa-bell text-warm"></i>
+                            <h5 class="card-title text-warm">Tahadhari</h5>
+                        </div>
+                        <p class="card-text text-warm">Hujambo, wasifu wako utatusaidia kubinafsisha utumiaji wako kwenye mfumo wa "Linda Mtoto" vizuri zaidi. Hebu tuunde wasifu wako kwanza.</p>
+                        <a href="@Url.Action("Create", "Profiles")" class="btn btn-warm rounded-pill">Unda Sasa</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="homepage">
+        <div class="container">
+            <div class="pt-4 pb-4 pe-4 ps-4 mb-4 bg-warm_light rounded-3 shadow border-0 minimized-padding">
+                <div class="container-fluid py-5 padding-zero">
+                    <h1 class="display-5 fw-bold text-warm text-center minimized-header-padding">Access to Information</h1>
+
+                    <p class="col ps-2 pe-2 fs-5 text-warm mb-4 d-grid m-auto text-center minimized-paragraph-padding">
+                        Kuboresha upatikanaji wa huduma za kabla ya kujifungua na baada ya kujifungua na taarifa kunaweza kusaidia kuhakikisha kuwa akina mama wote wanapata usaidizi wanaohitaji ili kupata ujauzito wenye afya na kujifungua mtoto mwenye afya njema.
+                    </p>
+
+                    <button class="btn btn-warm btn-lg rounded-pill wiggle-animation mb-4 d-grid m-auto" type="button" onclick="location.href='@Url.Action("Consultations", "Home")'">Uliza Swali</button>
+
+                    <div class="row justify-content-center">
+                        <div class="col-auto mb-3">
+                            <div class="card bg-warm text-white question-card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <p id="sample-question-1" class="card-text fs-5 text-center">Je, kuna madhara yoyote ambayo ninahitaji kujua baada ya mtoto wangu kupata chanjo?</p>
+                                </div>
+                                <div class="card-footer border-0 pb-3 bg-warm">
+                                    <button id="sample-query-1" class="btn btn-warm_transparent rounded-pill d-flex m-auto" type="button">
+                                        Pata Jibu <span style="position: relative; top: 2px; left: 6px;"><span id="myspinicon-1"></span></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto mb-3">
+                            <div class="card bg-warm text-white question-card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <p id="sample-question-2" class="card-text fs-5 text-center">Je, kuna vyakula au virutubisho ambavyo ninaweza kumpa mtoto wangu ili kuimarisha afya yake?</p>
+                                </div>
+                                <div class="card-footer border-0 pb-3 bg-warm">
+                                    <button id="sample-query-2" class="btn btn-warm_transparent rounded-pill d-flex m-auto" type="button">
+                                        Pata Jibu <span style="position: relative; top: 2px; left: 6px;"><span id="myspinicon-2"></span></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto mb-3">
+                            <div class="card bg-warm text-white question-card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <p id="sample-question-3" class="card-text fs-5 text-center">Habari Olivia. Je, ni sahihi kumweka mtoto wangu kwenye ratiba ya chanjo?</p>
+                                </div>
+                                <div class="card-footer border-0 pb-3 bg-warm">
+                                    <button id="sample-query-3" class="btn btn-warm_transparent rounded-pill d-flex m-auto" type="button">
+                                        Pata Jibu <span style="position: relative; top: 2px; left: 6px;"><span id="myspinicon-3"></span></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-md-stretch">
+                <div class="col-md-6 mb-4">
+                    <div class="h-100 p-5 text-white bg-warm rounded-3 shadow border-0">
+                        <h2>Artificial Intelligence</h2>
+                        <p class="fs-5">Linda Mtoto, tunaamini kwamba teknolojia ya AI inaweza kuwa na athari kubwa kwa afya ya uzazi na watoto wachanga barani Afrika.</p>
+                        <button class="btn btn-warm_transparent rounded-pill" type="button" asp-area="Identity" asp-page="/Account/Register">Jiunge nasi</button>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="h-100 p-5 bg-light border rounded-3 shadow border-0">
+                        <h2 class="text-warm">Join our Cause</h2>
+                        <p class="fs-5 text-warm">At Linda Mtoto, we believe that this is a collective effort and we highly appreciate any form of support that can help us achieve our objectives.</p>
+                        <button class="btn btn-warm_light rounded-pill border-color-warm" type="button">Donate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/sampleconsultations.js"></script>
+    <script src="~/js/profiletoast.js"></script>
+}

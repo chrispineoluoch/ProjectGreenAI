@@ -1,0 +1,82 @@
+﻿@model ProjectGreenAI.Models.Profile
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <div class="card Page-input-card mb-4 shadow">
+            <div class="card-body">
+                <h5 class="signin-card-title text-warm fs-5 fw-normal justify-content-start d-grid mb-4">
+                    Maelezo yangu ya kibinafsi
+                </h5>
+
+                <div class="justify-content-center">
+                    <div class="row g-4 pb-3">
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="FirstName" id="floatingInputValue" class="form-control Page-input-box myinput-text" />
+                                <label for="floatingInputValue">Jina langu la kwanza</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="LastName" id="floatingInputValue" class="form-control Page-input-box myinput-text" />
+                                <label for="floatingInputValue">Jina langu la mwisho</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="DateofBirth" id="floatingInputValue" class="form-control Page-input-box myinput-text datepicker" type="date" />
+                                <label for="floatingInputValue">Siku yangu ya kuzaliwa</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <select asp-for="Gender" id="floatingInputValue" class="form-control Page-input-box myinput-text" aria-label="Default select example">
+                                    <option selected>Utambulisho wangu wa jinsia ni ...</option>
+                                    <option value="Mwanaume">Mwanaume</option>
+                                    <option value="Mwanamke">Mwanamke</option>
+                                </select>
+                                <label for="floatingInputValue">Utambulisho wangu wa jinsia</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="IDNumber" id="floatingInputValue" class="form-control Page-input-box myinput-text" />
+                                <label for="floatingInputValue">Nambari yangu ya kitambulisho</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="PhoneNumber" id="floatingInputValue" class="form-control Page-input-box myinput-text" />
+                                <label for="floatingInputValue">Nambari yangu ya simu</label>
+                            </div>
+
+                            <div class="text-center mb-3">
+                                <input name="SubmitProfile" type="submit" id="ProfileCreate" value="Wasilisha" class="btn btn-warm btn-lg rounded-pill Page-button-transform" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>
+    $(function () {
+        $(".datepicker").datepicker({
+            dateFormat: "mm/dd/yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "1950:2024",
+            timeFormat: '', // ignore time
+            showTimepicker: false // ignore time
+        });
+    });
+</script>
+
+}
